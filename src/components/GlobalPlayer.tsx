@@ -46,8 +46,14 @@ export function GlobalPlayer() {
         setStreamFailed(false);
 
         const createHowl = (url: string, isFallback: boolean = false) => {
+            // Proxy HTTP streams to avoid mixed content errors on HTTPS deployments
+            let finalUrl = url;
+            if (url.startsWith('http://') && typeof window !== 'undefined' && window.location.protocol === 'https:') {
+                finalUrl = `/api/proxy-stream?url=${encodeURIComponent(url)}`;
+            }
+
             const newSound = new Howl({
-                src: [url],
+                src: [finalUrl],
                 html5: true, // Force HTML5 Audio so we don't download the whole stream
                 format: ['mp3', 'aac'],
                 volume: 0, // Start at 0 for fade in
@@ -58,7 +64,7 @@ export function GlobalPlayer() {
                     setupVisualizer();
                 },
                 onloaderror: () => {
-                    console.error('Failed to load stream:', url);
+                    console.error('Failed to load stream:', finalUrl);
                     if (!isFallback && currentStation.url && currentStation.url !== currentStation.url_resolved) {
                         console.log('Attempting fallback URL...');
                         newSound.unload();
