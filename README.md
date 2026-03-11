@@ -2,7 +2,7 @@
 
 RadyoBizden, günümüzün modern web teknolojileri harmanlanarak geliştirilmiş, Türkiye'nin önde gelen canlı radyo dinleme platformudur. **Glassmorphism** tasarım diline sahip olan bu proje; pürüzsüz geçişleri, müziğe duyarlı animasyonlu arkaplanı ve zengin dinleme özellikleriyle (10-Bant Ekolayzer, Canlı Dinleyici Senkronizasyonu, Özel Radyo Yönetimi vb.) benzersiz bir kulaklık ve göz zevki sunmayı hedefler.
 
-![Uygulama Demosu](./public/demo.webp)
+![Uygulama Demosu](./public/radyobizden.png)
 
 ## 🚀 Öne Çıkan Özellikler
 
